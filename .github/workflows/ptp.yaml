@@ -1,0 +1,24 @@
+name: Pull Request Target Paths
+on:
+  pull_request_target:
+    paths:
+      - 'trigger.txt'
+
+jobs:
+  hw:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'This workflow is from MAIN'
+      - run: echo event_name ${{ github.event_name }}
+      - run: echo event.action ${{ github.event.action }}
+      - run: echo repositoryUrl ${{ github.repositoryUrl }}
+      - run: echo sha ${{ github.sha }}
+      - run: echo ref ${{ github.ref }}
+      - run: echo base_ref ${{ github.base_ref }}
+      - run: echo head_ref ${{ github.head_ref }}
+      - uses: actions/checkout@v3
+      - run: pwd
+      - run: ls -al
+      - run: cat trigger.txt
+      - run: env
+      
